@@ -14,6 +14,24 @@ O sistema será responsável por:
 - Detectar possíveis fraudes
 - Gerar relatórios automáticos
 
+# Base de Dados de Transações
+
+O projeto utiliza um arquivo CSV contendo transações financeiras sintéticas da base **IBM Transactions**.
+
+A estrutura das transações possui informações como:
+
+- data e hora da transação
+- banco de origem
+- conta de origem
+- banco de destino
+- conta de destino
+- valor recebido
+- moeda recebida
+- valor pago
+- moeda paga
+- formato do pagamento
+- indicação original de lavagem de dinheiro
+
 # Regras Anti Fraude
 
 O sistema detecta possíveis fraudes utilizando regras:
