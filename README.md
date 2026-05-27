@@ -50,14 +50,7 @@ O sistema detecta possíveis fraudes utilizando regras:
 
 # Tecnologias Utilizadas
 
-O sistema será desenvolvido utilizando:
-
-- Node.js	Desenvolvimento da aplicação principal
-- Streams	Leitura eficiente do arquivo CSV grande
-- Worker Threads	Processamento concorrente das transações
-- CSV Parser	Conversão das linhas do CSV em objetos manipuláveis
-- File System	Leitura do arquivo de entrada e gravação dos resultados
-- JSON/CSV	Formato de saída das transações suspeitas
+A definir 
 
 # Estrutura do Projeto
 
