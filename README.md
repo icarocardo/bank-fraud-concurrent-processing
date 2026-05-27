@@ -31,7 +31,9 @@ A estrutura das transações possui informações como:
 - moeda paga
 - formato do pagamento
 - indicação original de lavagem de dinheiro
-- <img width="1920" height="1040" alt="process_folder cpython-313 pyc - Leitorpdf - Visual Studio Code 27_05_2026 17_37_22" src="https://github.com/user-attachments/assets/339e5869-39cb-4ba9-9b2e-6c0a14541373" />
+- 
+<img width="1920" height="1040" alt="HI-Small_Trans csv - Visual Studio Code 27_05_2026 19_33_17" src="https://github.com/user-attachments/assets/06729cb5-12aa-430f-894b-f75a13193eb9" />
+
 
 
 # Regras Anti Fraude
