@@ -18,12 +18,12 @@ O sistema será responsável por:
 
 O sistema detecta possíveis fraudes utilizando regras:
 
--Transações com valor muito alto
--Muitas transações em pouco tempo
--Tentativas repetidas de operação
--Horários suspeito
--Padrões anormais de comportamento
--Transferências sequenciais suspeitas
+- Transações com valor muito alto
+- Muitas transações em pouco tempo
+- Tentativas repetidas de operação
+- Horários suspeito
+- Padrões anormais de comportamento
+- Transferências sequenciais suspeitas
 
 # Tecnologias 
 
