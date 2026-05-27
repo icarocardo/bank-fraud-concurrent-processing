@@ -17,6 +17,7 @@ O sistema será responsável por:
 # Base de Dados de Transações
 
 O projeto utiliza um arquivo CSV contendo transações financeiras sintéticas da base **IBM Transactions**.
+esse banco de transações possui cerca de 5 milhões de transações
 
 A estrutura das transações possui informações como:
 
