@@ -6,6 +6,10 @@ Sistema de processamento concorrente e distribuído para análise de possíveis 
 
 Este projeto tem como objetivo aplicar conceitos de Programação Concorrente e Distribuída em um cenário de antifraude bancária.
 
+# Importancia
+
+A importância desse sistema está na capacidade de processar milhões de transações bancárias de forma eficiente, rápida e organizada, identificando padrões suspeitos que poderiam passar despercebidos em uma análise manual. Por utilizar conceitos de programação concorrente e distribuída, o sistema consegue dividir o processamento em partes menores, aproveitando melhor os recursos computacionais e reduzindo o tempo necessário para analisar grandes arquivos.
+
 O sistema será responsável por: 
 
 - Ler arquivos grandes de transações bancárias
