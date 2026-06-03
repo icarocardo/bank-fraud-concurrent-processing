@@ -88,13 +88,15 @@ Este resultado será utilizado como base de comparação para avaliar os ganhos 
 Nesta etapa, o sistema executou a análise das transações utilizando múltiplas threads/workers, permitindo a divisão da carga de trabalho entre diferentes unidades de execução.
 
 Tempo de Execução
-Modo	Threads/Workers	Tempo (s)
-Serial	1	243
-Paralelo	2	135
-Paralelo	4	65
-Paralelo	6	146
-Paralelo	8	61
-Speedup
+| Modo     | Threads/Workers | Tempo (s) |
+| -------- | --------------- | --------- |
+| Serial   | 1               | 243       |
+| Paralelo | 2               | 135       |
+| Paralelo | 4               | 65        |
+| Paralelo | 6               | 146       |
+| Paralelo | 8               | 61        |
+
+## Speedup
 
 O speedup mede quantas vezes a versão paralela é mais rápida que a versão serial, sendo calculado por:
 
