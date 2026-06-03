@@ -60,7 +60,9 @@ A estrutura das transações possui informações como:
 
 ## Processamento Sequencial (Serial)
 
-Nesta etapa, o sistema executou a análise das transações utilizando apenas uma única thread, processando os registros de forma sequencial, sem divisão de tarefas.
+Nesta etapa, o sistema executou a análise das transações utilizando apenas uma única thread, processando os registros de forma sequencial, sem divisão de tarefas. 
+os experimentos foram realizados utilizando o arquivo LI-Large_Trans.csv, contendo aproximadamente 176 milhões de transações financeiras.
+
 
 ### Resultado Obtido
 
@@ -82,6 +84,68 @@ Este resultado será utilizado como base de comparação para avaliar os ganhos 
 * Modelo de execução: **Sequencial (1 Thread)**
 
 
+## Resultados de Desempenho processamento paralelo
+
+Nesta etapa, o sistema executou a análise das transações utilizando múltiplas threads/workers, permitindo a divisão da carga de trabalho entre diferentes unidades de execução.
+
+Tempo de Execução
+Modo	Threads/Workers	Tempo (s)
+Serial	1	243
+Paralelo	2	135
+Paralelo	4	65
+Paralelo	6	146
+Paralelo	8	61
+Speedup
+
+O speedup mede quantas vezes a versão paralela é mais rápida que a versão serial, sendo calculado por:
+
+[
+Speedup = \frac{T_{serial}}{T_{paralelo}}
+]
+
+Threads/Workers	Speedup
+2	1,80x
+4	3,74x
+6	1,66x
+8	3,98x
+Eficiência
+
+A eficiência indica o aproveitamento dos recursos paralelos disponíveis:
+
+[
+Eficiência = \frac{Speedup}{Número\ de\ Workers}
+]
+
+Threads/Workers	Eficiência
+2	90,0%
+4	93,5%
+6	27,7%
+8	49,8%
+Análise dos Resultados
+
+Os resultados demonstram que a paralelização proporcionou uma redução significativa no tempo de processamento quando comparada à execução serial.
+
+A melhor configuração foi a utilização de 8 threads, que concluiu a execução em 61 segundos, representando um speedup de aproximadamente 3,98x em relação ao tempo serial de 243 segundos.
+
+Observa-se que o ganho de desempenho não cresce de forma linear com o aumento do número de threads. Em particular, a configuração com 6 threads apresentou desempenho inferior às configurações com 4 e 8 threads, resultando em um tempo de execução de 146 segundos.
+
+Esse comportamento pode ser explicado por fatores como:
+
+Sobrecarga de criação e sincronização das threads;
+Contenção de recursos compartilhados;
+Competição por núcleos de CPU;
+Gargalos de acesso à memória e ao sistema de arquivos;
+Custos de comunicação entre a thread principal e os workers;
+Estratégias de escalonamento adotadas pelo sistema operacional.
+
+Esses resultados evidenciam que o aumento do paralelismo nem sempre resulta em ganhos proporcionais de desempenho. Existe um ponto ótimo de utilização dos recursos computacionais, após o qual os custos de gerenciamento podem superar os benefícios da paralelização.
+
+Resumo
+Melhor resultado: 8 threads → 61 segundos
+Maior speedup: 3,98x
+Maior eficiência: 4 threads → 93,5%
+Pior configuração paralela: 6 threads → 146 segundos
+Redução máxima do tempo de execução: aproximadamente 75% em relação à versão serial
 # Funcionalidades Previstas
 
 O sistema será responsável por:
