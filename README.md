@@ -58,6 +58,30 @@ A estrutura das transações possui informações como:
 
 <img width="1920" height="1040" alt="HI-Small_Trans csv - Visual Studio Code 27_05_2026 19_33_17" src="https://github.com/user-attachments/assets/06729cb5-12aa-430f-894b-f75a13193eb9" />
 
+## Processamento Sequencial (Serial)
+
+Nesta etapa, o sistema executou a análise das transações utilizando apenas uma única thread, processando os registros de forma sequencial, sem divisão de tarefas.
+
+### Resultado Obtido
+
+<img width="1600" height="858" alt="Processamento Paralelo" src="https://github.com/user-attachments/assets/e3f4db38-4e44-40a1-93f1-d09142fee53f" />
+
+### Análise do Resultado
+
+O processamento sequencial analisou um total de **176.066.557 transações**, identificando **26.085.242 transações suspeitas**.
+
+O tempo total de execução foi de **243 segundos** (aproximadamente **4 minutos e 3 segundos**), demonstrando o alto custo computacional de processar grandes volumes de dados utilizando apenas uma thread.
+
+Este resultado será utilizado como base de comparação para avaliar os ganhos de desempenho obtidos através da implementação do processamento concorrente e distribuído.
+
+#### Resumo
+
+* Total de transações analisadas: **176.066.557**
+* Total de suspeitas encontradas: **26.085.242**
+* Tempo total de execução: **243 segundos**
+* Modelo de execução: **Sequencial (1 Thread)**
+
+
 # Funcionalidades Previstas
 
 O sistema será responsável por:
