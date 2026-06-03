@@ -98,18 +98,13 @@ Tempo de Execução
 
 ## Speedup
 
-O speedup mede quantas vezes a versão paralela é mais rápida que a versão serial, sendo calculado por:
+| Threads/Workers | Speedup |
+| --------------- | ------- |
+| 2               | 1,80x   |
+| 4               | 3,74x   |
+| 6               | 1,66x   |
+| 8               | 3,98x   |
 
-[
-Speedup = \frac{T_{serial}}{T_{paralelo}}
-]
-
-Threads/Workers	Speedup
-2	1,80x
-4	3,74x
-6	1,66x
-8	3,98x
-Eficiência
 
 A eficiência indica o aproveitamento dos recursos paralelos disponíveis:
 
@@ -117,12 +112,15 @@ A eficiência indica o aproveitamento dos recursos paralelos disponíveis:
 Eficiência = \frac{Speedup}{Número\ de\ Workers}
 ]
 
-Threads/Workers	Eficiência
-2	90,0%
-4	93,5%
-6	27,7%
-8	49,8%
-Análise dos Resultados
+## Threads/Workers	Eficiência
+
+| Threads/Workers | Eficiência |
+| --------------- | ---------- |
+| 2               | 90,0%      |
+| 4               | 93,5%      |
+| 6               | 27,7%      |
+| 8               | 49,8%      |
+
 
 Os resultados demonstram que a paralelização proporcionou uma redução significativa no tempo de processamento quando comparada à execução serial.
 
