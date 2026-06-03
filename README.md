@@ -61,7 +61,6 @@ A estrutura das transações possui informações como:
 ## Processamento Sequencial (Serial)
 
 Nesta etapa, o sistema executou a análise das transações utilizando apenas uma única thread, processando os registros de forma sequencial, sem divisão de tarefas. 
-os experimentos foram realizados utilizando o arquivo LI-Large_Trans.csv, contendo aproximadamente 176 milhões de transações financeiras.
 
 
 ### Resultado Obtido
