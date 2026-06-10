@@ -85,66 +85,56 @@ Este resultado será utilizado como base de comparação para avaliar os ganhos 
 
 ## Resultados de Desempenho processamento paralelo
 
+Análise de Desempenho da Execução Paralela
+
 Nesta etapa, o sistema executou a análise das transações utilizando múltiplas threads/workers, permitindo a divisão da carga de trabalho entre diferentes unidades de execução.
 
-Tempo de Execução
-| Modo     | Threads/Workers | Tempo (s) |
-| -------- | --------------- | --------- |
-| Serial   | 1               | 243       |
-| Paralelo | 2               | 135       |
-| Paralelo | 4               | 65        |
-| Paralelo | 6               | 146       |
-| Paralelo | 8               | 61        |
+Tempo de Execução e Speedup
 
-## Speedup
+Modo	Threads/Workers	Tempo (s)	Speedup
+Serial	1	243	1,00x
+Paralelo	2	135	1,80x
+Paralelo	4	65	3,74x
+Paralelo	8	61	3,98x
+Paralelo	12	57	4,26x
 
-| Threads/Workers | Speedup |
-| --------------- | ------- |
-| 2               | 1,80x   |
-| 4               | 3,74x   |
-| 6               | 1,66x   |
-| 8               | 3,98x   |
+Eficiência
 
+A eficiência representa o aproveitamento dos recursos paralelos disponíveis, sendo calculada pela razão entre o speedup obtido e a quantidade de workers utilizados.
 
-A eficiência indica o aproveitamento dos recursos paralelos disponíveis:
+Threads/Workers	Eficiência
+2	90,0%
+4	93,5%
+8	49,8%
+12	35,5%
 
-[
-Eficiência = \frac{Speedup}{Número\ de\ Workers}
-]
-
-## Threads/Workers	Eficiência
-
-| Threads/Workers | Eficiência |
-| --------------- | ---------- |
-| 2               | 90,0%      |
-| 4               | 93,5%      |
-| 6               | 27,7%      |
-| 8               | 49,8%      |
-
+Discussão dos Resultados
 
 Os resultados demonstram que a paralelização proporcionou uma redução significativa no tempo de processamento quando comparada à execução serial.
 
-A melhor configuração foi a utilização de 8 threads, que concluiu a execução em 61 segundos, representando um speedup de aproximadamente 3,98x em relação ao tempo serial de 243 segundos.
+A configuração com 12 threads apresentou o melhor desempenho, concluindo a execução em 57 segundos, o que representa um speedup de 4,26x em relação ao tempo serial de 243 segundos.
 
-Observa-se que o ganho de desempenho não cresce de forma linear com o aumento do número de threads. Em particular, a configuração com 6 threads apresentou desempenho inferior às configurações com 4 e 8 threads, resultando em um tempo de execução de 146 segundos.
+Apesar da redução contínua no tempo de execução com o aumento do número de threads, observa-se que a eficiência diminui após determinado ponto. Enquanto a configuração com 4 threads alcançou a maior eficiência (93,5%), as configurações com 8 e 12 threads apresentaram menor aproveitamento dos recursos disponíveis.
 
 Esse comportamento pode ser explicado por fatores como:
 
-Sobrecarga de criação e sincronização das threads;
-Contenção de recursos compartilhados;
-Competição por núcleos de CPU;
-Gargalos de acesso à memória e ao sistema de arquivos;
-Custos de comunicação entre a thread principal e os workers;
-Estratégias de escalonamento adotadas pelo sistema operacional.
+* Sobrecarga de criação e sincronização de threads;
+* Contenção de recursos compartilhados;
+* Competição por núcleos de CPU;
+* Gargalos de acesso à memória e ao sistema de arquivos;
+* Custos de comunicação entre a thread principal e os workers;
+* Estratégias de escalonamento adotadas pelo sistema operacional.
 
-Esses resultados evidenciam que o aumento do paralelismo nem sempre resulta em ganhos proporcionais de desempenho. Existe um ponto ótimo de utilização dos recursos computacionais, após o qual os custos de gerenciamento podem superar os benefícios da paralelização.
+Dessa forma, os resultados evidenciam que o aumento do paralelismo nem sempre produz ganhos proporcionais de desempenho. Existe um limite prático em que os custos de gerenciamento das threads passam a reduzir a eficiência global do sistema.
 
 Resumo
-Melhor resultado: 8 threads → 61 segundos
-Maior speedup: 3,98x
-Maior eficiência: 4 threads → 93,5%
-Pior configuração paralela: 6 threads → 146 segundos
-Redução máxima do tempo de execução: aproximadamente 75% em relação à versão serial
+
+* Melhor resultado: 12 threads (57 segundos);
+* Maior speedup: 4,26x;
+* Maior eficiência: 4 threads (93,5%);
+* Redução máxima do tempo de execução: aproximadamente 76,5% em relação à execução serial;
+* Menor tempo de processamento: 57 segundos utilizando 12 threads.
+  
 # Funcionalidades Previstas
 
 O sistema será responsável por:
