@@ -82,9 +82,6 @@ Este resultado será utilizado como base de comparação para avaliar os ganhos 
 * Tempo total de execução: **243 segundos**
 * Modelo de execução: **Sequencial (1 Thread)**
 
-
-## Resultados de Desempenho processamento paralelo
-
 Análise de Desempenho da Execução Paralela
 
 Nesta etapa, o sistema executou a análise das transações utilizando múltiplas threads/workers, permitindo a divisão da carga de trabalho entre diferentes unidades de execução.
@@ -99,8 +96,6 @@ Paralelo	8	61	3,98x
 Paralelo	12	57	4,26x
 
 Eficiência
-
-A eficiência representa o aproveitamento dos recursos paralelos disponíveis, sendo calculada pela razão entre o speedup obtido e a quantidade de workers utilizados.
 
 Threads/Workers	Eficiência
 2	90,0%
@@ -129,11 +124,12 @@ Dessa forma, os resultados evidenciam que o aumento do paralelismo nem sempre pr
 
 Resumo
 
-* Melhor resultado: 12 threads (57 segundos);
-* Maior speedup: 4,26x;
-* Maior eficiência: 4 threads (93,5%);
-* Redução máxima do tempo de execução: aproximadamente 76,5% em relação à execução serial;
-* Menor tempo de processamento: 57 segundos utilizando 12 threads.
+* Melhor resultado: 12 threads (57 segundos)
+* Maior speedup: 4,26x
+* Maior eficiência: 4 threads (93,5%)
+* Redução máxima do tempo de execução: aproximadamente 76,5% em relação à execução serial
+* Menor tempo de processamento: 57 segundos utilizando 12 threads
+
   
 # Funcionalidades Previstas
 
