@@ -94,9 +94,24 @@ Este resultado será utilizado como base de comparação para avaliar os ganhos 
 * Tempo total de execução: **243 segundos**
 * Modelo de execução: **Sequencial (1 Thread)**
 
-## Análise de Desempenho da Execução Paralela
+### Análise do Resultado
 
-Para avaliar os ganhos obtidos com a paralelização do processamento das transações, foram realizados testes utilizando diferentes quantidades de threads/workers. O objetivo foi medir a redução do tempo de execução e calcular o speedup em relação à versão serial da aplicação.
+O processamento sequencial analisou um total de **176.066.557 transações**, identificando **26.085.242 transações suspeitas**.
+
+O tempo total de execução foi de **243 segundos** (aproximadamente **4 minutos e 3 segundos**), demonstrando o alto custo computacional de processar grandes volumes de dados utilizando apenas uma thread.
+
+Este resultado será utilizado como base de comparação para avaliar os ganhos de desempenho obtidos através da implementação do processamento concorrente e distribuído.
+
+#### Resumo
+
+* Total de transações analisadas: **176.066.557**
+* Total de suspeitas encontradas: **26.085.242**
+* Tempo total de execução: **243 segundos**
+* Modelo de execução: **Sequencial (1 Thread)**
+
+# Análise de Desempenho da Execução Paralela
+
+Para avaliar os ganhos obtidos com a paralelização do processamento das transações, foram realizados testes utilizando diferentes quantidades de threads/workers. O objetivo foi medir a redução do tempo de execução e calcular o **speedup** em relação à versão sequencial da aplicação.
 
 ### Resultados
 
@@ -108,18 +123,27 @@ Para avaliar os ganhos obtidos com a paralelização do processamento das transa
 | Paralelo | 8               | 40        | 6,08x    |
 | Paralelo | 12              | 20        | 12,15x   | 
 
-### Discussão
+## Discussão
 
-Os resultados demonstram que a utilização de múltiplas threads reduziu significativamente o tempo total de processamento. A execução com **12 threads** apresentou o melhor tempo, concluindo a análise em **57 segundos**, o que representa um **speedup de 4,26x** em comparação à execução serial.
+Os resultados demonstram que a utilização de múltiplas threads reduziu significativamente o tempo total de processamento. A execução com **12 threads** apresentou o melhor desempenho, concluindo a análise em **20 segundos**, o que representa um **speedup de 12,15x** em comparação com a execução sequencial.
 
-Embora o aumento do número de threads continue reduzindo o tempo de execução, os ganhos tornam-se progressivamente menores devido a fatores como sincronização entre threads, contenção de recursos compartilhados, acesso à memória e limitações de hardware.
+Observa-se que o aumento da quantidade de threads proporcionou uma redução contínua no tempo de execução, evidenciando a eficiência da abordagem paralela para o processamento de grandes volumes de dados.
 
-### Destaques
+Os ganhos obtidos demonstram o impacto positivo da programação concorrente no aproveitamento dos recursos computacionais, tornando o processamento mais rápido e escalável.
+
+## Destaques
+
+* **Melhor tempo de execução:** 20 segundos (12 threads)
+* **Maior speedup:** 12,15x
+* **Redução máxima do tempo de processamento:** aproximadamente **91,8%** em relação à execução sequencial
+* **Evidência prática dos benefícios da programação concorrente** na análise de grandes volumes de transações financeiras
+
 
 *  Melhor tempo de execução:** 57 segundos (12 threads)
 *  Maior speedup:** 4,26x
 *  Redução máxima do tempo de processamento:** aproximadamente 76,5% em relação à execução serial
 *  Evidência prática dos benefícios e limitações da paralelização em aplicações com grande volume de processamento
+
 
 
   
