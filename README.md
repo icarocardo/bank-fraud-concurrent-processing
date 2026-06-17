@@ -37,6 +37,18 @@ O sistema será responsável por:
 - Detectar possíveis fraudes
 - Gerar relatórios automáticos
 
+## Especificações do Ambiente
+
+| Categoria               | Especificação       | Detalhes                                       |
+| ----------------------- | ------------------- | ---------------------------------------------- |
+| **Dispositivo**         | Nome do dispositivo | `c2labskill-14`                                |
+| **Processador**         | CPU                 | Intel® Core™ i7-12700 (12ª Geração) @ 2.10 GHz |
+| **Memória**             | RAM instalada       | 16 GB (15,7 GB utilizáveis)                    |
+| **Sistema**             | Arquitetura         | Sistema operacional 64 bits / Processador x64  |
+| **Sistema Operacional** | Edição              | Windows 11 Pro                                 |
+| **Sistema Operacional** | Versão              | 24H2                                           |
+| **Sistema Operacional** | Build do SO         | 26100.4652                                     |
+
 # Base de Dados de Transações
 
 O projeto utiliza um arquivo CSV contendo transações financeiras sintéticas da base **IBM Transactions**.
