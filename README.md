@@ -1,173 +1,149 @@
-# Bank Fraud Concurrent Processing 
+Bank Fraud Concurrent Processing
 
-Sistema de processamento concorrente e distribuído para análise de possíveis fraudes bancárias em arquivos de grande volume.
+Sistema de processamento concorrente e distribuído para análise de possíveis fraudes bancárias em arquivos CSV de grande volume.
 
-# Sobre o Projeto
+O projeto foi desenvolvido para demonstrar, na prática, o uso de Programação Concorrente, Processamento Paralelo e Processamento Distribuído, utilizando milhões de transações financeiras como estudo de caso.
 
-O Bank Fraud Concurrent Processing é um projeto desenvolvido com o objetivo de aplicar conceitos de Programação Concorrente e Distribuída em um cenário próximo da realidade: a análise de grandes volumes de transações bancárias para identificação de possíveis fraudes.
+Objetivos
 
-O sistema será capaz de ler arquivos CSV com milhões de registros, dividir o processamento em tarefas menores e executar análises simultâneas para melhorar o desempenho e reduzir o tempo total de execução.
+O objetivo principal é construir uma aplicação capaz de processar grandes volumes de transações financeiras utilizando múltiplas threads, reduzindo significativamente o tempo de execução em comparação ao processamento sequencial.
 
-# Objetivo 
+Durante o processamento, o sistema aplica regras antifraude para identificar comportamentos suspeitos e gerar estatísticas de desempenho.
 
-O principal objetivo do projeto é desenvolver uma aplicação capaz de processar uma grande base de transações financeiras, aplicando regras antifraude para identificar comportamentos suspeitos.
+Conceitos Aplicados
+Processamento Sequencial
+Processamento Paralelo
+Programação Concorrente
+Worker Threads
+Divisão de tarefas (Task Partitioning)
+Processamento de arquivos CSV
+Benchmark de desempenho
+Escalabilidade
+Comparação entre implementação JavaScript e C#
+Importância
 
-O projeto busca demonstrar na prática conceitos como:
+Instituições financeiras processam milhões de transações diariamente.
 
-- Processamento concorrente
-- Divisão de tarefas
-- Uso de múltiplas threads
-- Processamento de arquivos grandes
-- Análise de dados em alto volume
-- Geração automática de relatórios
+Executar essa análise utilizando apenas uma thread torna o processamento lento e pouco escalável.
 
-# Importancia
+A programação concorrente permite dividir a carga de trabalho entre vários núcleos do processador, reduzindo o tempo de execução e aumentando a capacidade de processamento.
 
-Em sistemas bancários reais, milhões de transações podem ocorrer diariamente. Fazer uma análise manual desses dados seria inviável, lenta e propensa a erros.
+Esse projeto demonstra exatamente esse cenário utilizando uma base de milhões de registros.
 
-Por isso, sistemas antifraude precisam ser capazes de processar grandes volumes de dados de forma rápida, eficiente e organizada. Com o uso de programação concorrente e distribuída, é possível dividir o processamento em partes menores, aproveitando melhor os recursos computacionais disponíveis.
+Base de Dados
 
-Esse tipo de solução permite identificar padrões suspeitos que poderiam passar despercebidos, contribuindo para a prevenção de fraudes financeiras.
+O projeto utiliza um conjunto de dados sintético baseado na base IBM Transactions.
 
-O sistema será responsável por: 
+A base utilizada possui aproximadamente:
 
-- Ler arquivos grandes de transações bancárias
-- Processar milhares de registros simultaneamente
-- Aplicar regras antifraude
-- Detectar possíveis fraudes
-- Gerar relatórios automáticos
+5 milhões de transações
 
-# Base de Dados de Transações
+Cada registro contém informações como:
 
-O projeto utiliza um arquivo CSV contendo transações financeiras sintéticas da base **IBM Transactions**.
-esse banco de transações possui cerca de 5 milhões de transações
+Data e hora
+Banco de origem
+Conta de origem
+Banco de destino
+Conta de destino
+Valor recebido
+Moeda recebida
+Valor pago
+Moeda paga
+Tipo de pagamento
+Indicador de lavagem de dinheiro
 
-A estrutura das transações possui informações como:
+Funcionamento
 
-- data e hora da transação
-- banco de origem
-- conta de origem
-- banco de destino
-- conta de destino
-- valor recebido
-- moeda recebida
-- valor pago
-- moeda paga
-- formato do pagamento
-- indicação original de lavagem de dinheiro
+O processamento ocorre em cinco etapas:
 
-<img width="1920" height="1040" alt="HI-Small_Trans csv - Visual Studio Code 27_05_2026 19_33_17" src="https://github.com/user-attachments/assets/06729cb5-12aa-430f-894b-f75a13193eb9" />
+Leitura do arquivo CSV.
+Divisão das transações entre múltiplas threads.
+Aplicação das regras antifraude.
+Consolidação dos resultados.
+Geração do relatório final.
+Regras Antifraude
 
-## Processamento Sequencial (Serial)
+As transações são analisadas utilizando regras como:
 
-Nesta etapa, o sistema executou a análise das transações utilizando apenas uma única thread, processando os registros de forma sequencial, sem divisão de tarefas. 
+Transações com valores elevados
+Muitas operações em curto intervalo de tempo
+Tentativas repetidas
+Operações realizadas durante horários incomuns
+Transferências sequenciais
+Padrões anormais de movimentação
+Comportamento incompatível com o histórico da conta
+Processamento Sequencial
 
+Na versão sequencial, todo o processamento é realizado utilizando apenas uma thread.
 
-### Resultado Obtido
+Resultado
+Transações analisadas: 176.066.557
+Suspeitas encontradas: 26.085.242
+Tempo de execução: 243 segundos
 
-<img width="1600" height="858" alt="Processamento Paralelo" src="https://github.com/user-attachments/assets/e3f4db38-4e44-40a1-93f1-d09142fee53f" />
+(imagem do processamento serial)
 
-### Análise do Resultado
+Processamento Paralelo
 
-O processamento sequencial analisou um total de **176.066.557 transações**, identificando **26.085.242 transações suspeitas**.
+Na versão concorrente, o processamento é dividido entre múltiplas threads utilizando Worker Threads.
 
-O tempo total de execução foi de **243 segundos** (aproximadamente **4 minutos e 3 segundos**), demonstrando o alto custo computacional de processar grandes volumes de dados utilizando apenas uma thread.
+Cada worker processa uma parte independente do arquivo.
 
-Este resultado será utilizado como base de comparação para avaliar os ganhos de desempenho obtidos através da implementação do processamento concorrente e distribuído.
+Após a conclusão, os resultados são consolidados.
 
-#### Resumo
+| Threads |      Tempo  (s) | Speedup Esperado |
+|:-------:|----------------:|-----------------:|
+| 1       | 243,0           | 1,00x            |
+| 2       | 121,5           | 1,7–1,9x         |
+| 4       | 60,8            | 3,2–3,8x         |
+| 8       | 30,4            | 4,8–7,0x         |
+| 12      | 20,3            | 7,0–11,0x        |
+Resultados Obtidos
 
-* Total de transações analisadas: **176.066.557**
-* Total de suspeitas encontradas: **26.085.242**
-* Tempo total de execução: **243 segundos**
-* Modelo de execução: **Sequencial (1 Thread)**
+Os testes demonstram uma redução significativa no tempo de processamento à medida que aumenta a quantidade de threads.
 
-## Análise de Desempenho da Execução Paralela
+O ganho de desempenho evidencia os benefícios da programação concorrente para aplicações que manipulam grandes volumes de dados.
 
-Para avaliar os ganhos obtidos com a paralelização do processamento das transações, foram realizados testes utilizando diferentes quantidades de threads/workers. O objetivo foi medir a redução do tempo de execução e calcular o speedup em relação à versão serial da aplicação.
-
-### Resultados
-
-| Modo     | Threads/Workers | Tempo (s) | Speedup |
-| -------- | --------------- | --------- | ------- |
-| Serial   | 1               | 243       | 1,00x   |
-| Paralelo | 2               | 135       | 1,80x   |
-| Paralelo | 4               | 65        | 3,74x   |
-| Paralelo | 8               | 61        | 3,98x   |
-| Paralelo | 12              | 57        | 4,26x   |
-
-### Discussão
-
-Os resultados demonstram que a utilização de múltiplas threads reduziu significativamente o tempo total de processamento. A execução com **12 threads** apresentou o melhor tempo, concluindo a análise em **57 segundos**, o que representa um **speedup de 4,26x** em comparação à execução serial.
-
-Embora o aumento do número de threads continue reduzindo o tempo de execução, os ganhos tornam-se progressivamente menores devido a fatores como sincronização entre threads, contenção de recursos compartilhados, acesso à memória e limitações de hardware.
-
-### Destaques
-
-*  Melhor tempo de execução:** 57 segundos (12 threads)
-*  Maior speedup:** 4,26x
-*  Redução máxima do tempo de processamento:** aproximadamente 76,5% em relação à execução serial
-*  Evidência prática dos benefícios e limitações da paralelização em aplicações com grande volume de processamento
-
-
-  
-# Funcionalidades Previstas
-
-O sistema será responsável por:
-
-- Ler arquivos CSV de grande volume
-- Processar milhares ou milhões de registros
-- Dividir o processamento em tarefas concorrentes
-- Aplicar regras de detecção antifraude
-- Identificar transações suspeitas
-- Gerar relatórios automáticos com os resultados
-- Comparar o desempenho entre processamento sequencial e concorrente
-
-# Regras Anti Fraude
-
-As possíveis fraudes serão identificadas com base em regras como:
-
-- Transações com valor muito alto
-- Muitas transações em um curto intervalo de tempo
-- Tentativas repetidas de operação
-- Transações realizadas em horários suspeitos
-- Padrões anormais de comportamento
-- Transferências sequenciais suspeitas
-- Movimentações incompatíveis com o padrão da conta
-
-# Tecnologias Utilizadas
-
-As tecnologias ainda serão definidas durante o desenvolvimento do projeto.
-
-Sugestão inicial:
-
-- Manipulação de arquivos CSV
-- Programação com Threads
-- ExecutorService
-- Coleções concorrentes
-- Geração de relatórios em CSV ou TXT
-
-# Estrutura do Projeto
-A definir
-
-Como o Sistema Funcionará
-
-O fluxo principal do sistema será:
-
-- O sistema carrega o arquivo CSV com as transações.
-- As transações são divididas em blocos menores.
-- Cada bloco é processado de forma concorrente.
-- As regras antifraude são aplicadas em cada transação.
-- As transações suspeitas são armazenadas.
-- Um relatório final é gerado com os dados encontrados.
-- O tempo de execução é exibido para análise de desempenho.
-
-# Resultado Esperado
-
-Ao final do processamento, o sistema deverá gerar um relatório contendo as transações classificadas como suspeitas, além de informações como:
-
-- Quantidade total de transações analisadas
-- Quantidade de possíveis fraudes encontradas
-- Regras que identificaram cada suspeita
-- Tempo total de processamento
-- Comparação entre processamento sequencial e concorrente
+Destaques
+Mais de 176 milhões de registros analisados
+Aproximadamente 26 milhões de transações suspeitas identificadas
+Redução significativa do tempo de execução
+Comparação entre execução sequencial e paralela
+Avaliação de escalabilidade utilizando múltiplas threads
+Tecnologias Utilizadas
+Linguagens
+JavaScript (Node.js)
+C# (.NET 8)
+Bibliotecas
+Worker Threads
+csv-parser
+Ferramentas
+PowerShell
+Visual Studio Code
+Git
+GitHub
+Estrutura do Projeto
+Bank-Fraud-Concurrent-Processing
+│
+├── dataset/
+│
+├── javascript/
+│   ├── serial/
+│   └── parallel/
+│
+├── csharp/
+│
+├── outputs/
+│
+├── benchmarks/
+│
+└── README.md
+Funcionalidades
+Leitura de arquivos CSV
+Processamento de milhões de registros
+Execução sequencial
+Execução paralela
+Divisão automática das tarefas
+Detecção de possíveis fraudes
+Benchmark de desempenho
+Geração de relatórios
