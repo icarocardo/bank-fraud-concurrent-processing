@@ -198,33 +198,34 @@ As principais tecnologias utilizadas são:
 
 ## Estrutura do Projeto
 
+```text
 projeto-antifraude/
-├── data/
+│
+├── data/                 # Base de transações (CSV)
 │   └── transacoes.csv
 │
-├── native/
-│   └── AntifraudeFast/
-│       ├── Program.cs
-│       ├── AntifraudeFast.csproj
-│       ├── bin/
-│       └── obj/
-│
-├── outputs/
-│   ├── relatorio.txt
-│   └── benchmark.csv
-│
-├── scripts/
-│   ├── run.ps1
-│   └── benchmark.ps1
-│
-├── src/
+├── src/                  # Implementação em Node.js
 │   ├── serial.js
 │   ├── parallel.js
 │   ├── worker.js
 │   └── utils/
 │
+├── native/               # Implementação em C# (.NET 8)
+│   ├── Program.cs
+│   └── AntifraudeFast.csproj
+│
+├── scripts/              # Scripts de execução e benchmark
+│   ├── run.ps1
+│   └── benchmark.ps1
+│
+├── outputs/              # Relatórios e resultados
+│   ├── relatorio.txt
+│   └── benchmark.csv
+│
 ├── package.json
 └── README.md
+```
+
 
 
 Como o Sistema Funcionará
