@@ -226,6 +226,7 @@ projeto-antifraude/
 ├── package.json
 └── README.md
 
+
 Como o Sistema Funcionará
 
 O fluxo principal do sistema será:
