@@ -88,13 +88,13 @@ Para avaliar os ganhos obtidos com a paralelização do processamento das transa
 
 ### Resultados
 
-| Modo     | Threads/Workers | Tempo (s) | Speedup |
-| -------- | --------------- | --------- | ------- |
-| Serial   | 1               | 243       | 1,00x   |
-| Paralelo | 2               | 135       | 1,80x   |
-| Paralelo | 4               | 65        | 3,74x   |
-| Paralelo | 8               | 61        | 3,98x   |
-| Paralelo | 12              | 57        | 4,26x   |
+| Modo     | Threads/Workers | Tempo (s) |  Speedup |
+| -------- | --------------- | --------- | -------- |
+| Serial   | 1               | 243       | 1,00x    |
+| Paralelo | 2               | 135       | 1,80x    |
+| Paralelo | 4               | 65        | 3,74x    |
+| Paralelo | 8               | 40        | 6,08x    |
+| Paralelo | 12              | 20        | 12,15x   | 
 
 ### Discussão
 
@@ -137,18 +137,58 @@ As possíveis fraudes serão identificadas com base em regras como:
 
 # Tecnologias Utilizadas
 
-As tecnologias ainda serão definidas durante o desenvolvimento do projeto.
+# Tecnologias Utilizadas
 
-Sugestão inicial:
+Este projeto foi desenvolvido utilizando tecnologias voltadas ao processamento concorrente e à análise de grandes volumes de dados.
 
-- Manipulação de arquivos CSV
-- Programação com Threads
-- ExecutorService
-- Coleções concorrentes
-- Geração de relatórios em CSV ou TXT
+As principais tecnologias utilizadas são:
 
-# Estrutura do Projeto
-A definir
+* **JavaScript (Node.js)**
+* **Worker Threads** para processamento paralelo
+* **csv-parser** para leitura eficiente de arquivos CSV
+* **PowerShell** para automação de execução e benchmarks
+* **C# (.NET 8)** para implementação nativa e comparação de desempenho
+
+## Conceitos Aplicados
+
+* Processamento sequencial
+* Processamento concorrente
+* Processamento paralelo
+* Divisão de carga por blocos de transações
+* Escalonamento por quantidade de threads/workers
+* Benchmark e análise de desempenho
+* Comparação de performance entre JavaScript (Node.js) e C# (.NET)
+
+
+## Estrutura do Projeto
+
+projeto-antifraude/
+├── data/
+│   └── transacoes.csv
+│
+├── native/
+│   └── AntifraudeFast/
+│       ├── Program.cs
+│       ├── AntifraudeFast.csproj
+│       ├── bin/
+│       └── obj/
+│
+├── outputs/
+│   ├── relatorio.txt
+│   └── benchmark.csv
+│
+├── scripts/
+│   ├── run.ps1
+│   └── benchmark.ps1
+│
+├── src/
+│   ├── serial.js
+│   ├── parallel.js
+│   ├── worker.js
+│   └── utils/
+│
+├── package.json
+└── README.md
 
 Como o Sistema Funcionará
 
@@ -164,10 +204,21 @@ O fluxo principal do sistema será:
 
 # Resultado Esperado
 
-Ao final do processamento, o sistema deverá gerar um relatório contendo as transações classificadas como suspeitas, além de informações como:
+Ao final de cada execução, o sistema exibe um resumo contendo as principais informações sobre o processamento realizado.
 
-- Quantidade total de transações analisadas
-- Quantidade de possíveis fraudes encontradas
-- Regras que identificaram cada suspeita
-- Tempo total de processamento
-- Comparação entre processamento sequencial e concorrente
+## Informações Geradas
+
+* Quantidade total de transações analisadas
+* Quantidade total de transações suspeitas identificadas
+* Tempo total de processamento (em segundos)
+
+## Informações Adicionais (Modo Paralelo/Nativo)
+
+Durante a execução paralela, também são apresentadas informações relacionadas ao processamento concorrente, como:
+
+* Quantidade de faixas (blocos) processadas
+* Quantidade de threads/workers utilizadas
+* Progresso do processamento por faixa concluída
+
+Essas informações permitem comparar o desempenho entre as implementações sequencial e paralela, além de avaliar os ganhos obtidos com a utilização de múltiplas threads.
+
