@@ -198,29 +198,28 @@ As principais tecnologias utilizadas são:
 ```text
 projeto-antifraude/
 │
-├── data/                 # Base de transações (CSV)
-│   └── transacoes.csv
+├── README.md
+├── Processamento Paralelo.jpeg
+├── .gitignore
 │
-├── src/                  # Implementação em Node.js
-│   ├── serial.js
-│   ├── parallel.js
-│   ├── worker.js
-│   └── utils/
-│
-├── native/               # Implementação em C# (.NET 8)
-│   ├── Program.cs
-│   └── AntifraudeFast.csproj
-│
-├── scripts/              # Scripts de execução e benchmark
-│   ├── run.ps1
-│   └── benchmark.ps1
-│
-├── outputs/              # Relatórios e resultados
-│   ├── relatorio.txt
-│   └── benchmark.csv
-│
-├── package.json
-└── README.md
+└── codigo/
+    │
+    ├── package.json
+    ├── NuGet.Config
+    ├── readme
+    │
+    ├── src/
+    │   ├── serial.js
+    │   ├── parallel.js
+    │   └── worker.js
+    │
+    ├── scripts/
+    │   └── run-native.ps1
+    │
+    └── native/
+        └── AntifraudeFast/
+            ├── Program.cs
+            └── AntifraudeFast.csproj
 ```
 
 
