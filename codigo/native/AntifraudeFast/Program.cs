@@ -11,9 +11,13 @@ const byte Nove = (byte)'9';
 
 var baseDir = AppContext.BaseDirectory;
 var repoDir = Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", ".."));
+var defaultInputFile = Path.Combine(repoDir, "data", "LI-Large_Trans.csv");
+var fallbackInputFile = Path.Combine(repoDir, "..", "data", "LI-Large_Trans.csv");
 var inputFile = args.Length >= 2
   ? Path.GetFullPath(args[1])
-  : Path.Combine(repoDir, "data", "LI-Large_Trans.csv");
+  : File.Exists(defaultInputFile)
+    ? defaultInputFile
+    : fallbackInputFile;
 var workers = LerInteiroPositivo(args.Length >= 1 ? args[0] : null, 12);
 
 if (!File.Exists(inputFile))

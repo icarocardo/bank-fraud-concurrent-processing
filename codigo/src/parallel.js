@@ -2,7 +2,17 @@ const fs = require('fs');
 const path = require('path');
 const { Worker } = require('worker_threads');
 
-const inputFile = path.join(__dirname, '..', 'data', 'LI-Large_Trans.csv');
+function encontrarArquivoEntrada() {
+  const caminhos = [
+    path.join(__dirname, '..', 'data', 'LI-Large_Trans.csv'),
+    path.join(__dirname, '..', '..', 'data', 'LI-Large_Trans.csv'),
+  ];
+
+  const encontrado = caminhos.find((caminho) => fs.existsSync(caminho));
+  return encontrado || caminhos[0];
+}
+
+const inputFile = encontrarArquivoEntrada();
 const workerFile = path.join(__dirname, 'worker.js');
 
 function lerInteiroPositivo(valor, padrao) {

@@ -2,7 +2,17 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
-const inputFile = path.join(__dirname, '..', 'data', 'LI-Large_Trans.csv');
+function encontrarArquivoEntrada() {
+  const caminhos = [
+    path.join(__dirname, '..', 'data', 'LI-Large_Trans.csv'),
+    path.join(__dirname, '..', '..', 'data', 'LI-Large_Trans.csv'),
+  ];
+
+  const encontrado = caminhos.find((caminho) => fs.existsSync(caminho));
+  return encontrado || caminhos[0];
+}
+
+const inputFile = encontrarArquivoEntrada();
 
 let totalTransacoes = 0;
 let totalSuspeitas = 0;

@@ -1,13 +1,21 @@
 node_modules/
+codigo/node_modules/
 
 data/*.csv
+codigo/data/*.csv
 outputs/
+codigo/outputs/
 
 .appdata/
 .dotnet_home/
 .nuget/
+codigo/.appdata/
+codigo/.dotnet_home/
+codigo/.nuget/
 
 native/**/bin/
 native/**/obj/
+codigo/native/**/bin/
+codigo/native/**/obj/
 
 *.log
