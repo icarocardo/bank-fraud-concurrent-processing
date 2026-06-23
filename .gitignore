@@ -1,0 +1,13 @@
+node_modules/
+
+data/*.csv
+outputs/
+
+.appdata/
+.dotnet_home/
+.nuget/
+
+native/**/bin/
+native/**/obj/
+
+*.log

@@ -1,0 +1,23 @@
+{
+  "name": "projeto-antifraude",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serial": "node src/serial.js",
+    "parallel": "node src/parallel.js",
+    "parallel:2": "node src/parallel.js 2",
+    "parallel:4": "node src/parallel.js 4",
+    "parallel:8": "node src/parallel.js 8",
+    "parallel:12": "node src/parallel.js 12",
+    "native:build": "powershell -ExecutionPolicy Bypass -Command \"& 'C:\\\\Program Files\\\\dotnet\\\\dotnet.exe' build native\\\\AntifraudeFast\\\\AntifraudeFast.csproj -c Release --configfile NuGet.Config\"",
+    "native": "powershell -ExecutionPolicy Bypass -File scripts\\run-native.ps1 4",
+    "native:4": "powershell -ExecutionPolicy Bypass -File scripts\\run-native.ps1 4",
+    "native:8": "powershell -ExecutionPolicy Bypass -File scripts\\run-native.ps1 8",
+    "native:12": "powershell -ExecutionPolicy Bypass -File scripts\\run-native.ps1 12"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
