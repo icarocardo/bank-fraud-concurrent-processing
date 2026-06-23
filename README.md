@@ -127,6 +127,12 @@ Para avaliar os ganhos obtidos com a paralelização do processamento das transa
 
 Os resultados demonstram que a utilização de múltiplas threads reduziu significativamente o tempo total de processamento. A execução com **12 threads** apresentou o melhor desempenho, concluindo a análise em **20 segundos**, o que representa um **speedup de 12,15x** em comparação com a execução sequencial.
 
+## Tempo de execução por quantidade de workers
+Eixo horizontal: Threads / Workers
+Eixo vertical: Tempo em segundos
+
+<img width="600" height="371" alt="_        Tempo de execução por quantidade de workers" src="https://github.com/user-attachments/assets/7bde3e8c-b3e8-4804-85be-13e97e21f318" />
+
 Observa-se que o aumento da quantidade de threads proporcionou uma redução contínua no tempo de execução, evidenciando a eficiência da abordagem paralela para o processamento de grandes volumes de dados.
 
 Os ganhos obtidos demonstram o impacto positivo da programação concorrente no aproveitamento dos recursos computacionais, tornando o processamento mais rápido e escalável.
@@ -138,15 +144,6 @@ Os ganhos obtidos demonstram o impacto positivo da programação concorrente no 
 * **Redução máxima do tempo de processamento:** aproximadamente **91,8%** em relação à execução sequencial
 * **Evidência prática dos benefícios da programação concorrente** na análise de grandes volumes de transações financeiras
 
-
-*  Melhor tempo de execução:** 57 segundos (12 threads)
-*  Maior speedup:** 4,26x
-*  Redução máxima do tempo de processamento:** aproximadamente 76,5% em relação à execução serial
-*  Evidência prática dos benefícios e limitações da paralelização em aplicações com grande volume de processamento
-
-
-
-  
 # Funcionalidades Previstas
 
 O sistema será responsável por:
